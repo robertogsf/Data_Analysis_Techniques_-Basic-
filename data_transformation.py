@@ -1,15 +1,19 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
-# Load a dataset
-df = pd.read_csv('data.csv')
+# Load the dataset
+df = pd.read_csv('./data/data.csv')
 
 # Normalize a column
-df['normalized_column'] = (df['column'] - df['column'].mean()) / df['column'].std()
+df['normalized_feature1'] = (df['feature1'] - df['feature1'].mean()) / df['feature1'].std()
 
-# Encode categorical variables
-df = pd.get_dummies(df, columns=['category'])
+# Print the transformed data
+print("Transformed Data:")
+print(df)
 
-# Create new features
-df['new_column'] = df['column1'] * df['column2']
-
-print(df.head())
+# Scatter plot of normalized data
+plt.scatter(df['feature1'], df['normalized_feature1'])
+plt.xlabel('Feature1')
+plt.ylabel('Normalized Feature1')
+plt.title('Scatter Plot of Feature1 vs Normalized Feature1')
+plt.show()

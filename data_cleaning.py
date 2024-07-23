@@ -1,18 +1,18 @@
 import pandas as pd
 
-# Load a dataset
-df = pd.read_csv('data.csv')
+# Load the dataset
+df = pd.read_csv('./data/data.csv')
 
-# Show the first 5 rows
-print(df.head())
+# Print the initial data
+print("Initial Data:")
+print(df)
 
-# Delete rows with missing values
-df.dropna(inplace=True)
+# Handle missing values
+df.fillna(df.mean(numeric_only=True), inplace=True)
 
-# Drop duplicate rows
+# Remove duplicates
 df.drop_duplicates(inplace=True)
 
-# Fill missing values
-df.fillna(df.mean(), inplace=True)
-
-print(df.head())
+# Print the cleaned data
+print("\nCleaned Data:")
+print(df)
